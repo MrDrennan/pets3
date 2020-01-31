@@ -9,6 +9,7 @@ session_start();
 require "vendor/autoload.php";
 
 $f3 = Base::instance();
+$f3->set('DEBUG', 3);
 $f3->set('colors', array('pink', 'green', 'blue'));
 
 
@@ -46,12 +47,12 @@ $f3->route('GET /@item', function($f3, $params) {
 
 });
 
-$f3->route('GET /order',function () {
+$f3->route('GET|POST /order',function () {
     $view = new Template();//template object
     echo $view-> render('views/form1.html');//use it to render the main page
 });
 
-$f3->route('POST /order2',function ()
+$f3->route('GET|POST /order2',function ()
 {
     $_SESSION['animal'] = $_POST['animal'];
     $view = new Template();//template object
