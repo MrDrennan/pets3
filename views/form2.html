@@ -8,10 +8,10 @@
 <form action="results" method="post">
     <label for="color">Color</label>
     <select type="text" name="color" id="color">
-        <option value="Pink">Pink</option>
-        <option value="Black">Black</option>
-        <option value="Brown">Brown</option>
-        <option value="White">White</option>
+        <option value="">--Select a color--</option>
+        <repeat group="{{ @colors }}" value="{{ @colorOption }}">
+            <option>{{ @colorOption }}</option>
+        </repeat>
     </select>
 <button type="submit">Next>></button>
 </form>
