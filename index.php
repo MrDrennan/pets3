@@ -9,6 +9,8 @@ session_start();
 require "vendor/autoload.php";
 
 $f3 = Base::instance();
+$f3->set('colors', array('pink', 'green', 'blue'));
+
 
 $f3->route('GET /',function ()
 {
