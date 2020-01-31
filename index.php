@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_start();
 
 require "vendor/autoload.php";
-
+require_once ('model/validation-functions.php');
 $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 $f3->set('colors', array('pink', 'green', 'blue'));
@@ -47,9 +47,22 @@ $f3->route('GET /@item', function($f3, $params) {
 
 });
 
-$f3->route('GET|POST /order',function () {
+$f3->route('GET|POST /order',function ($f3){
+    $_SESSION = [];
+    session_destroy();
+    if(isset($_POST['animal'])) {
+        $animal = $_POST['animal'];
+        if(validText($animal)) {
+            $_SESSION['animal'] = $animal;
+            $f3->reroute('/order2.html');
+        }
+        else {
+            $f3->set("errors['animal']", "Please enter an animal");
+        }
+    }
     $view = new Template();//template object
-    echo $view-> render('views/form1.html');//use it to render the main page
+    echo $view-> render('views/form1.html');
+    //use it to render the main page
 });
 
 $f3->route('GET|POST /order2',function ()
