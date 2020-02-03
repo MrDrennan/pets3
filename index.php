@@ -76,7 +76,7 @@ $f3->route('GET|POST /order2',function ($f3)
             return;
         }
         else {
-            $f3->set("errors['color']", "Please enter a color");
+            $f3->set("errors['color']", "Please select a valid color");
         }
     }
     $view = new Template();//template object
