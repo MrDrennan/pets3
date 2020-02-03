@@ -8,11 +8,15 @@
 <form action="#" method="post">
     <label for="color">Color</label>
     <select type="text" name="color" id="color">
-        <option value="Pink">Pink</option>
-        <option value="Black">Black</option>
-        <option value="Brown">Brown</option>
-        <option value="White">White</option>
+        <option value="">Select</option>
+        <option value="pink">Pink</option>
+        <option value="black">Black</option>
+        <option value="brown">Brown</option>
+        <option value="white">White</option>
     </select>
+    <check if="{{ isset(@errors['color']) }}">
+        <span>{{ @errors['color'] }}</span>
+    </check>
 <button type="submit">Next>></button>
 </form>
 </body>

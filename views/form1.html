@@ -8,6 +8,10 @@
 <form action="#" method="post">
 <label for="animal">Animal</label>
     <input type="text" name="animal" id="animal">
+    <check if="{{ isset(@errors['animal']) }}">
+        <span>{{ @errors['animal'] }}</span>
+    </check>
+
     <button type="submit">Next>></button>
 </form>
 </body>
